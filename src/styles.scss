@@ -1,0 +1,54 @@
+
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'ngx-toastr/toastr';
+
+@utility container{
+    margin-inline: auto;
+}
+
+@layer components {
+    .card{
+    @apply shadow-lg border-main p-2 rounded border border-main
+}
+   .btn{
+    @apply bg-main text-white hover:bg-secondary w-full rounded border border-amber-800 py-1.5 transition-all duration-300 cursor-pointer
+}
+.main-input{
+    @apply block rounded-t-base px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand
+}
+.main-label{
+    @apply absolute text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
+}
+.register-text{
+    @apply text-center text-2xl text-main absolute bottom-8 start-1/2 translate-x-[-50%] font-bold
+}
+}
+
+@theme {
+    --color-main:#a68a64;
+    --background-color-main:#99582a;
+    --background-color-secondary:#432818;
+    --font-family : "Montserrat", serif;
+}
+body{
+    font-family: var(--font-family);
+}
+
+
+.skeleton {
+    animation: skeleton_loader 1s linear infinite alternate;
+}
+@keyframes skeleton_loader {
+    0% {
+        background-color: #e2e8f0;
+    }
+    100% {
+        background-color: #cbd5e1;
+    }
+    
+}

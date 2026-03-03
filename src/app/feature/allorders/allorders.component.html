@@ -1,0 +1,76 @@
+<section class="p-4">
+  <div class="container grid sm:grid-cols-12 items-start gap-4">
+    <div class="col-span-8 p-4">
+      <h1 class="text-4xl">
+        Cart <Span class="text-2xl text-main">{{ userOrder.length }} item</Span>
+      </h1>
+
+      @for (item of userOrder; track item._id) { @for (cartitem of item.cartItems ; track $index) {
+      <div class="grid sm:grid-cols-12 bg-white shadow my-4">
+        <div class="col-span-1 p-2">
+          <img
+            [src]="cartitem.product.imageCover"
+            class="rounded"
+            width="200px"
+            height="200px"
+            [alt]="cartitem.product.title"
+          />
+        </div>
+        <div class="col-span-11 justify-between mx-5">
+          <div class="flex justify-between">
+            <div class="">
+              <p>{{ cartitem.product.title }}</p>
+              <div class="flex items-center space-x-10 my-5">
+                <div class="space-x-10 border border-main p-2 rounded">
+                  <span
+                    >Number Of Items : <span class="px-4 py-6">{{ cartitem.count }}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="my-4">{{ cartitem.price * cartitem.count | currency }}</p>
+          </div>
+        </div>
+      </div>
+      }}
+    </div>
+    @for (item of userOrder; track item._id) {
+    <div class="col-span-4 border-main rounded shadow p-4">
+      <h2 class="text-2xl text-main">Order Summery</h2>
+      <ul class="mb-5">
+        <li class="flex justify-between items-center">
+          <p>Price</p>
+          <p>{{ item.totalOrderPrice | currency }}</p>
+        </li>
+        <li class="flex justify-between items-center">
+          <p>Shipping</p>
+          <p>{{ item.shippingPrice }}</p>
+        </li>
+        <li class="flex justify-between items-center">
+          <p>deliverd</p>
+          <p>{{ item.isDelivered }}</p>
+        </li>
+        <li class="flex justify-between items-center">
+          <p>ispaid</p>
+          <p>{{ item.isPaid ? 'yes' : 'no' }}</p>
+        </li>
+      </ul>
+      <div class="flex-col justify-between items-center">
+        <p>shipping adress</p>
+        <ul>
+          <li>
+            <p>City :{{ item.shippingAddress.city }}</p>
+          </li>
+          <li>
+            <p>Phone: {{ item.shippingAddress.phone }}</p>
+          </li>
+          <li>
+            <p>Details: {{ item.shippingAddress.details }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    }
+  </div>
+</section>

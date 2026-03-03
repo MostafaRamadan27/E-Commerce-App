@@ -1,0 +1,82 @@
+<section class="p-4">
+  <div class="container grid sm:grid-cols-12 items-start gap-4">
+    <div class="col-span-8 p-4">
+      <h1 class="text-4xl">
+        Cart <Span class="text-2xl text-main">{{ cartDetails.products.length }} item</Span>
+      </h1>
+      @for (item of cartDetails.products; track item._id) {
+      <div class="grid sm:grid-cols-12 bg-white shadow my-4">
+        <div class="col-span-1 p-2">
+          <img
+            [src]="item.product.imageCover"
+            class="rounded"
+            width="200px"
+            height="200px"
+            [alt]="item.product.title"
+          />
+        </div>
+        <div class="col-span-11 justify-between mx-5">
+          <div class="flex justify-between">
+            <div class="">
+              <p>{{ item.product.title }}</p>
+              <div class="flex items-center space-x-10 my-5">
+                <div class="space-x-10 border border-main p-2 rounded">
+                  <button
+                    class="cursor-pointer"
+                    (click)="updateCount(item.product._id, item.count - 1)"
+                  >
+                    <i class="fas fa-minus text-main cursor-pointer"></i>
+                  </button>
+                  <span>{{ item.count }}</span>
+                  <button class="cursor-pointer">
+                    <i
+                      class="fas fa-plus text-main cursor-pointer"
+                      (click)="updateCount(item.product._id, item.count + 1)"
+                    ></i>
+                  </button>
+                </div>
+                <button class="cursor-pointer" (click)="deleteCartItem(item.product._id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            <p class="my-4">{{ item.price * item.count | currency }}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="col-span-4 border-main rounded shadow p-4">
+      <h2 class="text-2xl text-main">Order Summery</h2>
+      <ul class="mb-5">
+        <li class="flex justify-between fa-align-center">
+          <p>Price</p>
+          <p>{{ cartDetails.totalCartPrice | currency }}</p>
+        </li>
+        <li class="flex justify-between fa-align-center">
+          <p>Discount</p>
+          <p>None</p>
+        </li>
+        <li class="flex justify-between fa-align-center">
+          <p>Shipping</p>
+          <p>None</p>
+        </li>
+        <li class="flex justify-between fa-align-center">
+          <p>Coupon Applied</p>
+          <p>none</p>
+        </li>
+      </ul>
+      <ul class="">
+        <li class="flex justify-between fa-align-center">
+          <p>Total</p>
+          <p>{{ cartDetails.totalCartPrice }}</p>
+        </li>
+        <li class="flex justify-between fa-align-center">
+          <p>Estimeted Deliverd By</p>
+          <p>none</p>
+        </li>
+      </ul>
+      <button class="btn" [routerLink]="['/checkout', cartDetails._id]">CheckOut</button>
+    </div>
+  </div>
+</section>

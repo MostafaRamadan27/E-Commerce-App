@@ -1,0 +1,32 @@
+<section class="text-center md:w-1/2 p-4 mx-auto my-10">
+  <h1 class="text-4xl my-6 text-main">CheckOut</h1>
+
+  <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+    <app-input
+      [element]="'input'"
+      [typeInput]="'text'"
+      [control]="checkOutForm.get('shippingAddress')?.get('city')"
+      [idInput]="'city'"
+      [labelInput]="'City'"
+    ></app-input>
+    <app-input
+      [element]="'input'"
+      [typeInput]="'tel'"
+      [control]="checkOutForm.get('shippingAddress')?.get('phone')"
+      [idInput]="'phone'"
+      [labelInput]="'Phone'"
+    >
+      <li>Invalid phone format. Please use Egyption Number.</li>
+    </app-input>
+    <app-input
+      [element]="'text'"
+      [control]="checkOutForm.get('shippingAddress')?.get('details')"
+      [idInput]="'details'"
+      [labelInput]="'Details'"
+    ></app-input>
+
+    <div class="flex items-center space-x-6 mt-7">
+      <button class="btn">pay by Visa</button>
+    </div>
+  </form>
+</section>

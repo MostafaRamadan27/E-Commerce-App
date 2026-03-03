@@ -1,0 +1,131 @@
+<nav class="bg-neutral-primary w-full z-20 top-0 start-0 border-b border-default">
+  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
+    <a class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="/images/freshcart-logo.svg" alt="" />
+    </a>
+    <button
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-6 h-6"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M5 7h14M5 12h14M5 17h14"
+        />
+      </svg>
+    </button>
+    <div class="hidden mx-2 grow w-full md:flex md:w-auto" id="navbar-default">
+      @if (isLogin === true) {
+        <ul
+          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0"
+        >
+          <li>
+            <a
+              routerLink="/home"
+              routerLinkActive="text-white bg-main"
+              class="block py-2 px-3 text-amber-900 hover:text-main rounded md:p-1"
+              aria-current="page"
+              >Home</a
+            >
+          </li>
+
+          <li>
+            <a
+              routerLink="/products"
+              routerLinkActive="text-white bg-main"
+              class="block py-2 px-3 text-black hover:text-main rounded md:p-1"
+              aria-current="page"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/categories"
+              routerLinkActive="text-white bg-main"
+              class="block py-2 px-3 text-black hover:text-main rounded md:p-1"
+              aria-current="page"
+              >Categories</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/brands"
+              routerLinkActive="text-white bg-main"
+              class="block py-2 px-3 text-black hover:text-main rounded md:p-1"
+              aria-current="page"
+              >Brands</a
+            >
+          </li>
+        </ul>
+      }
+      <ul
+        class="font-medium ms-auto flex flex-col items-center p-4 md:p-0 mt-4 border border-default rounded-base md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary"
+      >
+        <li class="space-x-2">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+          <i class="fab fa-instagram"></i>
+        </li>
+        @if (isLogin === false) {
+          <li>
+            <a
+              routerLink="/login"
+              routerLinkActive="text-white bg-main"
+              class="block py-2 px-3 text-black hover:text-main rounded md:p-1"
+              aria-current="page"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/register"
+              routerLinkActive="text-white bg-main  "
+              class="block py-2 px-3 text-black hover:text-main rounded md:p-1"
+              aria-current="page"
+              >register</a
+            >
+          </li>
+        } @else {
+          <li>
+            <a
+              routerLink="/cart"
+              routerLinkActive="text-white bg-main"
+              class="block py-2 px-3 text-black hover:text-main rounded md:p-1 relative"
+              aria-current="page"
+            >
+              <i class="fas fa-cart-shopping text-2xl"></i>
+              <span
+                class="absolute top-[-10px] right-[-5px] bg-main px-[2px] rounded-4xl text-white"
+              >
+                {{ count() }}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="signOut()"
+              class="block py-2 px-3 cursor-pointer text-black hover:text-main rounded md:p-1"
+              aria-current="page"
+              >SignOut</a
+            >
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

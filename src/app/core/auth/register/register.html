@@ -1,0 +1,86 @@
+<section class="container mx-auto py-10 px-5">
+  <h1 class="text-main text-center text-3xl">Register Now</h1>
+  <div class="flex justify-center gap-3 mt-8">
+    <form action="" class="w-full md:w-1/2" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <app-input
+        [control]="registerForm.get('name')"
+        [typeInput]="'text'"
+        [idInput]="'name'"
+        labelInput="'Enter Your Name'"
+      >
+      </app-input>
+      <app-input
+        [control]="registerForm.get('email')"
+        [typeInput]="'email'"
+        [idInput]="'email'"
+        [labelInput]="'Enter Your Email'"
+      ></app-input>
+      <app-input
+        [control]="registerForm.get('password')"
+        [idInput]="'password'"
+        [labelInput]="'Enter Your Password'"
+      >
+        <li>✔ At least 8 characters</li>
+        <li>✔ At least 1 lowercase letter</li>
+        <li>✔ At least 1 uppercase letter</li>
+        <li>✔ At least 1 number</li>
+        <li>✔ At least 1 special character (@$!%*?&)</li>
+        <li>✔ No spaces</li>
+      </app-input>
+      <app-input
+        [control]="registerForm.get('rePassword')"
+        [idInput]="'rePassword'"
+        [labelInput]="'Confirm Your password'"
+      ></app-input>
+      <app-input
+        [control]="registerForm.get('phone')"
+        [typeInput]="'tel'"
+        [idInput]="'phone'"
+        [labelInput]="'Enter Your PhoneNumber'"
+      >
+        <li>Invalid phone format. Please use Egyption Number.</li>
+      </app-input>
+      <button [disabled]="isLoading" type="submit" class="btn mb-1">
+        Register @if (isLoading) {
+        <span class="fas fa-spinner animate-spin"></span>
+        }
+      </button>
+      @if (msgError) {
+      <p class="bg-red-400 text-red-900 p-2 rounded-md text-center">{{ msgError }}</p>
+      }@else if(msgSuccess){
+      <p class="bg-green-400 text-green-900 p-2 rounded-md text-center">{{ msgSuccess }}</p>
+      }
+    </form>
+    <div class="w-1/2 hidden lg:block overflow-hidden">
+      <owl-carousel-o [options]="registerSlider">
+        <ng-template carouselSlide>
+          <img
+            src="/images/slider-image-1.jpeg"
+            object-fit="cover"
+            class="w-full relative opacity-35"
+            alt=""
+          />
+          <h1 class="register-text">Welcome To FreshCart</h1>
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="/images/slider-image-2.jpeg"
+            object-fit="cover"
+            class="w-full relative opacity-35"
+            alt=""
+          />
+          <h1 class="register-text">Welcome To FreshCart</h1>
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="/images/slider-image-3.jpeg"
+            object-fit="cover "
+            class="w-full relative opacity-35"
+            alt=""
+          />
+          <h1 class="register-text">Welcome To FreshCart</h1>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>

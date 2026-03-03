@@ -1,0 +1,15 @@
+<section class="pt-12 container">
+  <div class="">
+    <h2 class="text-4xl mb-7">Shop Popular Category</h2>
+    <owl-carousel-o [options]="categoryOptions">
+      @for (category of categories; track category._id) {
+      <ng-template carouselSlide [id]="category._id">
+        <div class="border border-main rounded p-2">
+          <img [src]="category.image" [alt]="category.name" class="w-full h-[250px]" />
+          <h3>{{ category.name }}</h3>
+        </div>
+      </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+</section>

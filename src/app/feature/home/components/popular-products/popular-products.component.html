@@ -1,0 +1,8 @@
+<section class="mt-10 p-5">
+  <h2 class="text-4xl">Popular Products</h2>
+  <div class="mt-10 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    @for (product of productList.slice(0,12); track product._id) {
+    <app-card [product]="product" />
+    }
+  </div>
+</section>

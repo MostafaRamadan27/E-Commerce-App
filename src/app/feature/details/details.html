@@ -1,0 +1,90 @@
+<section>
+  <div class="container mt-6">
+    <div class="flex justify-around gap-3 flex-col lg:flex-row">
+      <div class="relative">
+        <img
+          [src]="selectImg || productDetails.images?.[0]"
+          class="w-full h-[37.5rem]"
+          [alt]="productDetails.title"
+        />
+        <div
+          class="absolute top-full flex items-center justify-center gap-3 w-full md:top-1/4 md:left-[-25px] md:flex-none md:block"
+        >
+          @for (img of productDetails.images; track $index) {
+          <img
+            [src]="img"
+            [alt]="productDetails.title"
+            #cahangeImg
+            class="w-12 cursor-pointer border-main rounded border-2 mb-2"
+            (click)="changeImg(img)"
+          />
+
+          }
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 mt-20">
+        <span><i class="fas fa-star text-yellow-300"></i> {{ productDetails.ratingsAverage }}</span>
+        <h2 class="text-4xl text-main my-1">{{ productDetails.title }}</h2>
+        <p class="text-2xl my-1">{{ productDetails.description }}</p>
+        <h3 class="text-3xl"><span class="font-bold">Color</span></h3>
+        <div class="flex mt-5 gap-5">
+          <div class="w-7 h-7 bg-blue-700 rounded-[50%] hover:scale-150 cursor-pointer"></div>
+          <div class="w-7 h-7 bg-black rounded-[50%] hover:scale-150 cursor-pointer"></div>
+          <div class="w-7 h-7 bg-red-700 rounded-[50%] hover:scale-150 cursor-pointer"></div>
+          <div class="w-7 h-7 bg-yellow-700 rounded-[50%] hover:scale-150 cursor-pointer"></div>
+          <div class="w-7 h-7 bg-green-700 rounded-[50%] hover:scale-150 cursor-pointer"></div>
+          <div class="w-7 h-7 bg-pink-700 rounded-[50%] hover:scale-150 cursor-pointer"></div>
+          <div class="w-7 h-7 bg-gray-700 rounded-[50%] hover:scale-150 cursor-pointer"></div>
+        </div>
+        <h3 class="text-xl mt-5">
+          <span class="font-bold">Size:</span><span class="text-main">Medium</span>
+        </h3>
+        <div class="flex mt-5 gap-5">
+          <div
+            class="w-10 h-10 border-2 border-main flex justify-center items-center cursor-pointer hover:scale-110 hover:bg-main hover:text-white transition-all duration-200"
+          >
+            S
+          </div>
+          <div
+            class="w-10 h-10 border-2 border-main flex justify-center items-center cursor-pointer hover:scale-110 hover:bg-main hover:text-white transition-all duration-200"
+          >
+            M
+          </div>
+          <div
+            class="w-10 h-10 border-2 border-main flex justify-center items-center cursor-pointer hover:scale-110 hover:bg-main hover:text-white transition-all duration-200"
+          >
+            L
+          </div>
+          <div
+            class="w-10 h-10 border-2 border-main flex justify-center items-center cursor-pointer hover:scale-110 hover:bg-main hover:text-white transition-all duration-200"
+          >
+            XL
+          </div>
+          <div
+            class="w-10 h-10 border-2 border-main flex justify-center items-center cursor-pointer hover:scale-110 hover:bg-main hover:text-white transition-all duration-200"
+          >
+            XXL
+          </div>
+        </div>
+        <h3 class="text-xl mt-5">
+          <span class="font-bold">Quantitiy:</span><span class="text-main">1</span>
+        </h3>
+        <div class="flex flex-col mt-3 gap-4 md:flex-row w-full">
+          <button
+            class="border-2 flex justify-between items-center border-main rounded py-3 px-6 hover:bg-main hover:text-white transition-all duration-200"
+          >
+            <i class="fas fa-minus cursor-pointer"></i>
+            <span class="mx-6">1</span>
+            <i class="fas fa-plus cursor-pointer"></i>
+          </button>
+          <button
+            (click)="addProductToCart(productDetails._id)"
+            class="border-2 cursor-pointer flex items-center justify-between border-main rounded py-3 px-6 block w-full hover:bg-main hover:text-white transition-all duration-200 ml-0 md:ml-4"
+          >
+            <span>{{ productDetails.price }}$</span> <span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

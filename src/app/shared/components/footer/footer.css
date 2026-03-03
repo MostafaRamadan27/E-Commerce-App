@@ -1,0 +1,30 @@
+.bg-main {
+  background-color: #99582a !important;
+}
+
+.bg-main-light {
+  background-color: #f0f3f2 !important;
+}
+
+.btn-main {
+  background-color: #99582a;
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+
+.btn-main:hover {
+  background-color: #432818;
+}/*# sourceMappingURL=footer.css.map */

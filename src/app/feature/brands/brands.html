@@ -1,0 +1,11 @@
+<section class="grid-cols-12">
+  <h2 class="text-4xl mb-5 text-center my-10 text-main">Brands</h2>
+  <div class="grid sm:grid-cols-3 gap-4 mt-20">
+    @for (item of brandsData; track item._id) {
+      <div class="">
+        <img [src]="item.image" [alt]="item.slug" class="w-full object-contain h-[15.625rem]" />
+        <p class="text-center">{{ item.name }}</p>
+      </div>
+    }
+  </div>
+</section>
